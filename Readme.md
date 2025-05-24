@@ -2,12 +2,12 @@
 
 A beautiful, modern SwiftUI authentication flow with email/password sign-up and login.
 
-![App Preview](screenshots/app-preview.png)
-
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="screenshots/login.png" width="300" alt="Login Screen">
-  <img src="screenshots/register.png" width="300" alt="Registration Screen">
-</div>
+<!--![App Preview](screenshots/app-preview.png)-->
+<!---->
+<!--<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">-->
+<!--  <img src="screenshots/login.png" width="300" alt="Login Screen">-->
+<!--  <img src="screenshots/register.png" width="300" alt="Registration Screen">-->
+<!--</div>-->
 
 ## ✨ Features
 
