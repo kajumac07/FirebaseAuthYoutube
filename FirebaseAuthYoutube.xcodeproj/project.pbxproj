@@ -35,16 +35,6 @@
 			path = FirebaseAuthYoutube;
 			sourceTree = "<group>";
 		};
-		246086292DE1DAA3002624E7 /* FirebaseAuthYoutubeTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FirebaseAuthYoutubeTests;
-			sourceTree = "<group>";
-		};
-		246086332DE1DAA3002624E7 /* FirebaseAuthYoutubeUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FirebaseAuthYoutubeUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				2460861B2DE1DAA1002624E7 /* FirebaseAuthYoutube */,
-				246086292DE1DAA3002624E7 /* FirebaseAuthYoutubeTests */,
-				246086332DE1DAA3002624E7 /* FirebaseAuthYoutubeUITests */,
 				2460861A2DE1DAA1002624E7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				246086282DE1DAA3002624E7 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				246086292DE1DAA3002624E7 /* FirebaseAuthYoutubeTests */,
-			);
 			name = FirebaseAuthYoutubeTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				246086322DE1DAA3002624E7 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				246086332DE1DAA3002624E7 /* FirebaseAuthYoutubeUITests */,
 			);
 			name = FirebaseAuthYoutubeUITests;
 			packageProductDependencies = (
