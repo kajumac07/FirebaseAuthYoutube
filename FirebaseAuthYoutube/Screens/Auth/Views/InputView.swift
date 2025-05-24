@@ -6,7 +6,7 @@ import SwiftUI
 
 struct InputView: View {
     let placeholder:String
-    let isSecuredField:Bool=false
+    var isSecuredField:Bool=false
     @Binding var text:String
     var body: some View {
         VStack(spacing:12){

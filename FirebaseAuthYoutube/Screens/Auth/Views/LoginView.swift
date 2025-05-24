@@ -13,14 +13,24 @@ struct LoginView: View {
     
     var body: some View {
         ScrollView{
-            VStack{
+            VStack(spacing:16){
                 //logo
-                Image("Login").resizable().scaledToFit()
                 //title
                 Text("Let's connect with US !").font(.title2).fontWeight(.semibold)
+                Spacer().frame(height: 16 )
                 //textFields
-                TextField("Email or Phone Number", text: $email)
-                SecureField("Password", text: $password)
+                InputView(placeholder: "Email or Phone Number", text: $email)
+                InputView(placeholder: "Password", isSecuredField: true, text: $password)
+                HStack{
+                    Spacer()
+                    Button{
+                        
+                    } label:
+                    {
+                        Text("Forgot Password?").foregroundStyle(.gray).font(.subheadline).fontWeight(.medium)
+                    }
+                }
+               
                 //forgot button
                 //login button
                 //bottom view
