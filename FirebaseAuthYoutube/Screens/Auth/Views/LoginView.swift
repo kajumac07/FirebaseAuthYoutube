@@ -1,3 +1,6 @@
+//Login View
+
+
 import SwiftUI
 
 struct LoginView: View {
@@ -12,100 +15,92 @@ struct LoginView: View {
                            startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Animated logo
-                    Image(systemName: "person.2.wave.2.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 60)
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.teal, .purple]),
-                                              startPoint: .leading, endPoint: .trailing))
-                        .scaleEffect(isAnimating ? 1.1 : 1.0)
-                        .rotationEffect(.degrees(isAnimating ? -5 : 5))
-                        .animation(Animation.easeInOut(duration: 2).repeatForever(), value: isAnimating)
-                        .padding(.top, 40)
-                    
-                    // Title with gradient
-                    Text("Welcome Back!")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.teal, .indigo]),
-                                              startPoint: .leading, endPoint: .trailing))
-                    
-                    Text("Let's connect with your community")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    
-                    // TextFields with floating labels
-                    FloatingLabelInput(placeholder: "Email", text: $email, systemImage: "envelope")
-                        .keyboardType(.emailAddress)
-                        .textContentType(.emailAddress)
-                        .autocapitalization(.none)
-                    
-                    FloatingLabelInput(placeholder: "Password", text: $password, isSecure: true, systemImage: "lock")
-                        .textContentType(.password)
-                    
-                    // Forgot password
-                    HStack {
-                        Spacer()
-                        Button(action: {}) {
-                            Text("Forgot Password?")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.teal)
-                        }
-                    }
-                    
-                    // Login button
-                    Button(action: {
-                        print("Login Tapped")
-                    }) {
-                        HStack {
-                            Text("Login")
-                                .fontWeight(.semibold)
-                            Image(systemName: "arrow.right")
-                        }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(GradientButtonStyle())
-                    .padding(.top, 8)
-                    
-                    // Divider section
-                    HStack {
-                        line
-                        Text("or continue with").font(.caption).foregroundColor(.gray)
-                        line
-                    }
-                    
-                    // Social login buttons
-                    HStack(spacing: 16) {
-                        SocialLoginButton(icon: "apple.logo", text: "Apple", color: .black)
-                        SocialLoginButton(icon: "g.circle.fill", text: "Google", color: .red)
-                    }
-                    .padding(.top, 8)
-                    
-                    // Sign up prompt
-                    NavigationLink{
-                        //move to signup screen
+            NavigationStack{
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Animated logo
+                        logo
                         
-                    } label: {
+                        // Title with gradient
+                        Text("Welcome Back!")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.teal, .indigo]),
+                                                            startPoint: .leading, endPoint: .trailing))
+                        
+                        Text("Let's connect with your community")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                        
+                        // TextFields with floating labels
+                        FloatingLabelInput(placeholder: "Email", text: $email, systemImage: "envelope")
+                            .keyboardType(.emailAddress)
+                            .textContentType(.emailAddress)
+                            .autocapitalization(.none)
+                        
+                        FloatingLabelInput(placeholder: "Password", text: $password, isSecure: true, systemImage: "lock")
+                            .textContentType(.password)
+                        
+                        // Forgot password
                         HStack {
-                            Text("Don't have an account?")
-                                .foregroundColor(.gray)
+                            Spacer()
                             Button(action: {}) {
-                                Text("Sign up")
+                                Text("Forgot Password?")
+                                    .font(.footnote)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.teal)
                             }
                         }
-                        .font(.footnote)
-                        .padding(.top, 24)
+                        
+                        // Login button
+                        Button(action: {
+                            print("Login Tapped")
+                        }) {
+                            HStack {
+                                Text("Login")
+                                    .fontWeight(.semibold)
+                                Image(systemName: "arrow.right")
+                            }
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(GradientButtonStyle())
+                        .padding(.top, 8)
+                        
+                        // Divider section
+                        HStack {
+                            line
+                            Text("or continue with").font(.caption).foregroundColor(.gray)
+                            line
+                        }
+                        
+                        // Social login buttons
+                        HStack(spacing: 16) {
+                            SocialLoginButton(icon: "apple.logo", text: "Apple", color: .black)
+                            SocialLoginButton(icon: "g.circle.fill", text: "Google", color: .red)
+                        }
+                        .padding(.top, 8)
+                        
+                        // Sign up prompt
+                        NavigationLink{
+                            //move to signup screen
+                            CreateAccountView();
+                            
+                        } label: {
+                            HStack {
+                                Text("Don't have an account?")
+                                    .foregroundColor(.gray)
+                                Text("Sign up")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.teal)
+                            }
+                            .font(.footnote)
+                            .padding(.top, 24)
+                        }
                     }
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 40)
                 }
-                .padding(.horizontal, 24)
-                .padding(.bottom, 40)
             }
         }
         .onAppear {
@@ -118,6 +113,19 @@ struct LoginView: View {
             .frame(height: 1)
             .foregroundColor(.gray.opacity(0.3))
             .frame(maxWidth: .infinity)
+    }
+    
+    private var logo:some View{
+        Image(systemName: "person.2.wave.2.fill")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 80, height: 60)
+            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.teal, .purple]),
+                                            startPoint: .leading, endPoint: .trailing))
+            .scaleEffect(isAnimating ? 1.1 : 1.0)
+            .rotationEffect(.degrees(isAnimating ? -5 : 5))
+            .animation(Animation.easeInOut(duration: 2).repeatForever(), value: isAnimating)
+            .padding(.top, 40)
     }
 }
 
