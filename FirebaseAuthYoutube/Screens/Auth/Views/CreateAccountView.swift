@@ -9,7 +9,8 @@ struct CreateAccountView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var isAnimating = false
-    @StateObject private var authViewModel = AuthViewModel()
+    
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         ZStack {

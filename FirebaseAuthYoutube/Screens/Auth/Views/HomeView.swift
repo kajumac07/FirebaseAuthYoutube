@@ -1,15 +1,30 @@
-//
-//  HomeView.swift
-//  FirebaseAuthYoutube
-//
-//  Created by Atul Tiwari on 31/05/25.
-//
+ 
 
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var authViewModel : AuthViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Spacer()
+            if let currentUser = authViewModel.currentUser{
+                Text(currentUser.fullName)
+            } else{
+                ProgressView("Please Wait.. while we fetching your details")
+            }
+            Spacer()
+            
+            Button("Sign Out", action: {
+                Task{
+                    await authViewModel.UserLogout()
+                }
+                
+            }
+            
+            )
+        }
     }
 }
 

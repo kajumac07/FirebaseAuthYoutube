@@ -16,10 +16,11 @@ struct FirebaseAuthYoutubeApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject private var authViewModel = AuthViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(authViewModel)
         }
     }
 }

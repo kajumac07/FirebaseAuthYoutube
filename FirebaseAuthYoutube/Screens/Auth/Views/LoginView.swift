@@ -8,7 +8,7 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isAnimating = false
     
-    @StateObject private var authViewModel = AuthViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         ZStack {
@@ -88,7 +88,7 @@ struct LoginView: View {
                         // Sign up prompt
                         NavigationLink{
                             //move to signup screen
-                            CreateAccountView();
+                            CreateAccountView().environmentObject(authViewModel);
                             
                         } label: {
                             HStack {
