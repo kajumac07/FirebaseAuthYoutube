@@ -104,6 +104,7 @@ struct LoginView: View {
                     }
                     .padding(.horizontal, 24)
                     .padding(.bottom, 40)
+                    .alert("Something Went Wrong", isPresented: $authViewModel.isError) {}
                 }
             }
         }
