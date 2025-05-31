@@ -9,6 +9,7 @@ struct CreateAccountView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var isAnimating = false
+    @StateObject private var authViewModel = AuthViewModel()
     
     var body: some View {
         ZStack {
@@ -99,7 +100,11 @@ struct CreateAccountView: View {
                     Spacer()
                     
                     // Create Account button
-                    Button(action: {}) {
+                    Button(action: {
+                        Task{
+                            await authViewModel.createUserAc(email: email, fullName: fullName, password: password)
+                        }
+                    }) {
                         HStack {
                             Text("Create Account")
                                 .fontWeight(.semibold)
